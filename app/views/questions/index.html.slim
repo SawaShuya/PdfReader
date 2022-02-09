@@ -1,0 +1,55 @@
+h2 
+  | Questions index 
+
+.form
+  = form_with url: create_from_pdf_path, local: true do |f|
+    = f.label "第"
+    = f.number_field :number, maxlength: 4, value: 0
+    = f.label "回"
+    = f.number_field :year, maxlength: 4, value: Time.current.year
+    = f.label "年度"
+    = f.file_field :contents, multiple: true
+    = f.submit "送信"
+
+.index 
+  table
+    tr 
+      th
+        | 科目
+      th 
+        | 問題文
+      th 
+        | 選択肢1
+      th 
+        | 選択肢2
+      th 
+        | 選択肢3
+      th 
+        | 選択肢4
+      th 
+        | 選択肢5
+      th 
+        | 注
+      th 
+
+    - @questions.each do |question|
+      tr
+        td 
+          = question.test_subject.subject.name
+        td 
+          = question.text
+        td 
+          = question.choice1
+        td 
+          = question.choice2
+        td 
+          = question.choice3
+        td 
+          = question.choice4 
+        td 
+          = question.choice5 
+        td 
+          = question.attention 
+        td.links 
+          = link_to "編集", "#"
+  
