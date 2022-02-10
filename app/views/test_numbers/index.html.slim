@@ -1,3 +1,8 @@
-.index 
+h2 
+  | 年度一覧
+
+table.index.table
   - @years.each do |year|
-    = link_to year, test_year_subjects_path(year: year)
+    tr 
+      td 
+        = link_to year, test_year_subjects_path(year: year)

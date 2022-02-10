@@ -1,7 +1,12 @@
 h2 
-  | top 
-.links 
-  = link_to '年度から', test_numbers_path
-  = link_to '科目から', subjects_path
-  = link_to '問題一覧', questions_path
-  = link_to '問題登録', new_question_path
+  | トップページ
+
+ul.links.list-group 
+  li.list-group-item
+    = link_to '年度から', test_numbers_path
+  li.list-group-item
+    = link_to '科目から', subjects_path
+  li.list-group-item
+    = link_to '問題一覧', questions_path
+  li.list-group-item
+    = link_to '問題登録', new_question_path

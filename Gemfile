@@ -70,3 +70,9 @@ gem 'devise'
 
 gem 'better_errors'
 gem 'binding_of_caller'
+
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.13'
+
+gem 'kaminari','~> 1.2.1'

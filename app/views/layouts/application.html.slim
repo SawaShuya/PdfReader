@@ -10,13 +10,13 @@ html
   body
 
     header
-      = link_to 'Home', root_path
-      = link_to "Subjects", subjects_path
-      = link_to "Test numbers", test_numbers_path
-      = link_to "Questions", questions_path
-      = link_to "Upload", new_question_path
-    main
-      = flash[:notice]
-      = yield
+      = render 'layouts/header'
+    main.mb-3
+      .alert.alert-light
+        .container 
+          = flash[:notice]
+
+      .container
+        = yield
 
     footer

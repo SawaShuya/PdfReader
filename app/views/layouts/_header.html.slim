@@ -1,0 +1,17 @@
+nav.navbar.navbar-dark.bg-dark
+  .container
+
+    ul.nav.ml-auto
+      li.nav-item
+        = link_to ' トップページ', root_path, class: 'nav-link text-light fas fa-chess-king'
+      li.nav-item
+        = link_to " 科目", subjects_path, class: 'nav-link text-light fas fa-graduation-cap'
+      li.nav-item
+        = link_to " 年度", test_numbers_path, class: 'nav-link text-light fas fa-calendar'
+      li.nav-item
+        = link_to " 問題一覧", questions_path, class: 'nav-link text-light fas fa-layer-group'
+      li.nav-item
+        - if user_signed_in?
+          = link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link fas fa-share-square text-light'
+        - else
+          = link_to " ログイン", new_user_session_path, class: 'nav-link text-light fas fa-user-lock'

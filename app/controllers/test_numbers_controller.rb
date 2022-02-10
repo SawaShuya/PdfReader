@@ -5,8 +5,8 @@ class TestNumbersController < ApplicationController
   end
 
   def subjects
-    year = params[:year]
-    test_number_ids = TestNumber.where(year: year).map { |test_number| test_number.id }
+    @year = params[:year]
+    test_number_ids = TestNumber.where(year: @year).map { |test_number| test_number.id }
     @test_subjects = TestSubject.where(test_number_id: test_number_ids)
   end
 

@@ -1,4 +1,4 @@
 h2 
-  | backnumber from test_numbers
+  = @year.to_s + " 年度の科目一覧"
 
 = render 'test_subjects/index', test_subjects: @test_subjects

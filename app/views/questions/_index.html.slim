@@ -1,4 +1,4 @@
-table
+table.table
   tr 
     th 
       | 年度
@@ -6,6 +6,7 @@ table
       | 科目
     th 
       | 問題文
+    th
     th
 
   - questions.each do |question|
@@ -16,8 +17,11 @@ table
         = question.test_subject.subject.name
       td 
         = question.text
-      td.links
+      td
         = link_to '詳細', question_path(question)
+      td
         = link_to "編集", edit_question_path(question)
+
+= paginate questions
 
   

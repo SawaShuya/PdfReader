@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all.includes(:test_subject).sort{|a, b| b.created_at <=> a.created_at}
+    @questions = Question.all.includes(:test_subject).page(params[:page])
   end
 
   def create
@@ -17,8 +17,10 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    @question.update(question_params)
-    redirect_to root_path
+    if @question.update(question_params)
+      flash[:notice] = "登録しました!"
+    end
+    redirect_to questions_path
   end
 
   def create_from_pdf
@@ -37,7 +39,8 @@ class QuestionsController < ApplicationController
       @questions = QuestionCollection.new(exchange_hash(@unsaved_questions))
       render "ajust_form"
     else
-      redirect_to root_path
+      flash[:notice] = "登録しました ! "
+      redirect_to questions_path
     end
   end
 

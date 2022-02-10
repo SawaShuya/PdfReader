@@ -1,4 +1,4 @@
 h2 
-  | backnumber from subject
+  = "「" + @subject.name + "」 の年度一覧"
 
 = render 'test_subjects/index', test_subjects: @test_subjects
