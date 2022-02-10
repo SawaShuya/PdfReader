@@ -1,0 +1,5 @@
+table
+  - test_subjects.each do |test_subject|
+    tr 
+      td
+        = link_to test_subject.full_info, test_subject_path(test_subject)
