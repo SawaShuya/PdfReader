@@ -68,9 +68,13 @@ table.show.table
     td
       = @question.updated_at.strftime("%Y/%m/%d %H:%M")
 
-.links
-  = link_to "編集", edit_question_path(@question), class: "btn btn-info"
-  = link_to "削除", question_path(@question), method: :delete, class: "btn btn-danger"
+- if user_signed_in?
+  .links
+    .row
+      .col
+        = link_to "編集", edit_question_path(@question), class: "btn btn-info btn-block"
+      .col
+        = link_to "削除", question_path(@question), method: :delete, class: "btn btn-danger btn-block"
 
 
 

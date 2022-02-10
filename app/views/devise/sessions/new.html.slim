@@ -1,0 +1,18 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .sign-in.card.shadow.mx-auto.p-3.font-weight-bold.text-center
+    .card-body
+      .card-title
+        h4
+          | ログイン
+      .card-text
+        .field.mt-4
+          = f.label :email
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field.mt-4
+          = f.label :password
+          br
+          = f.password_field :password, autocomplete: "current-password"
+
+        .actions.mt-4
+          = f.submit "ログイン", class: "btn btn-outline-secondary reset-cookie-button"

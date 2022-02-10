@@ -5,17 +5,32 @@ h2
   = form_with model: @questions, url: create_collection_path, local: true do |form|
     - @questions.collection.each do |question|
       = fields_for 'questions[]', question do |f|
-        .fulltext 
-          = question.fulltext
-        .field 
-          = f.hidden_field :test_subject_id
-          = f.text_field :text
-          = f.text_field :choice1
-          = f.text_field :choice2
-          = f.text_field :choice3
-          = f.text_field :choice4
-          = f.text_field :choice5
-          = f.text_field :attention
-        .actions 
-          = f.submit
+        .card.card-body
+          .fulltext.card-title
+            = question.fulltext
+          .form-group
+            = f.hidden_field :test_subject_id
+          .form-group
+            = f.label "問題文"
+            = f.text_field :text, class: "form-control"
+          .form-group
+            = f.label "選択肢1"
+            = f.text_field :choice1, class: "form-control"
+          .form-group
+            = f.label "選択肢2"
+            = f.text_field :choice2, class: "form-control"
+          .form-group
+            = f.label "選択肢3"
+            = f.text_field :choice3, class: "form-control"
+          .form-group
+            = f.label "選択肢4"
+            = f.text_field :choice4, class: "form-control"
+          .form-group
+            = f.label "選択肢5"
+            = f.text_field :choice5, class: "form-control"
+          .form-group
+            = f.label "注"
+            = f.text_field :attention, class: "form-control"
+      .actions 
+        = form.submit "修正完了", class: "btn btn-info"
 

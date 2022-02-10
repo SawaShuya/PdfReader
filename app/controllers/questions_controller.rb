@@ -1,7 +1,11 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :new]
+
   def index
     @questions = Question.all.includes(:test_subject).page(params[:page])
   end
+
+  def new; end
 
   def create
 
@@ -47,7 +51,7 @@ class QuestionsController < ApplicationController
   def create_collection
     @questions = QuestionCollection.new(question_collect_params)
     if @questions.save
-      redirect_to root_path
+      redirect_to questions_path
     else
       render "ajust_form"
     end
@@ -89,7 +93,7 @@ class QuestionsController < ApplicationController
         @unsaved_questions << question
       end
     end
-
+    return @unsaved_questions
   end
 
   def exchange_hash(questions)

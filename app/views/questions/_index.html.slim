@@ -7,7 +7,6 @@ table.table
     th 
       | 問題文
     th
-    th
 
   - questions.each do |question|
     tr
@@ -19,8 +18,6 @@ table.table
         = question.text
       td
         = link_to '詳細', question_path(question)
-      td
-        = link_to "編集", edit_question_path(question)
 
 = paginate questions
 

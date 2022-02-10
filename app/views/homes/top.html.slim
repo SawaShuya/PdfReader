@@ -8,5 +8,6 @@ ul.links.list-group
     = link_to '科目から', subjects_path
   li.list-group-item
     = link_to '問題一覧', questions_path
-  li.list-group-item
-    = link_to '問題登録', new_question_path
+  - if user_signed_in?
+    li.list-group-item
+      = link_to '問題登録', new_question_path
