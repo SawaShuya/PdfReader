@@ -1,41 +1,23 @@
 table
   tr 
+    th 
+      | 年度
     th
       | 科目
     th 
       | 問題文
-    th 
-      | 選択肢1
-    th 
-      | 選択肢2
-    th 
-      | 選択肢3
-    th 
-      | 選択肢4
-    th 
-      | 選択肢5
-    th 
-      | 注
-    th 
+    th
 
   - questions.each do |question|
     tr
+      td
+        = question.test_subject.test_number.year
       td 
         = question.test_subject.subject.name
       td 
         = question.text
-      td 
-        = question.choice1
-      td 
-        = question.choice2
-      td 
-        = question.choice3
-      td 
-        = question.choice4 
-      td 
-        = question.choice5 
-      td 
-        = question.attention 
-      td.links 
-        = link_to "編集", "#"
+      td.links
+        = link_to '詳細', question_path(question)
+        = link_to "編集", edit_question_path(question)
+
   

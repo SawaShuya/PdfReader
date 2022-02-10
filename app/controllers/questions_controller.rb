@@ -7,6 +7,20 @@ class QuestionsController < ApplicationController
 
   end
 
+  def show
+    @question = Question.find(params[:id])
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    @question.update(question_params)
+    redirect_to root_path
+  end
+
   def create_from_pdf
     contents = params[:contents]
     test_number = TestNumber.find_or_create_by(test_number_params)
@@ -43,6 +57,10 @@ class QuestionsController < ApplicationController
 
   def question_collect_params
     params.require(:questions)
+  end
+
+  def question_params
+    params.require(:question).permit(:text, :choice1, :choice2, :choice3, :choice4, :choice5, :answer, :attention)
   end
 
   def save_texts(text_arr, test_number)

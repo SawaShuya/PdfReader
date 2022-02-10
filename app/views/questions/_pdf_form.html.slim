@@ -1,0 +1,8 @@
+= form_with url: create_from_pdf_path, local: true do |f|
+    = f.label "第"
+    = f.number_field :number, maxlength: 4, value: 0
+    = f.label "回"
+    = f.number_field :year, maxlength: 4, value: Time.current.year
+    = f.label "年度"
+    = f.file_field :contents, multiple: true
+    = f.submit "送信"

@@ -1,0 +1,20 @@
+h2 
+  | question show 
+
+= link_to "編集", edit_question_path(@question)
+
+.show
+  = @question.test_subject.full_info
+  = @question.text
+  = @question.choice1
+  = @question.choice2
+  = @question.choice3
+  = @question.choice4
+  = @question.choice5
+  = @question.attention
+  = @question.answer
+  = @question.comment
+  = @question.created_at.strftime("%Y/%m/%d %H:%M")
+  = @question.updated_at.strftime("%Y/%m/%d %H:%M")
+
+

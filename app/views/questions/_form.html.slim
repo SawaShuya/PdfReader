@@ -1,0 +1,25 @@
+= form_with model: question, local: true do |f|
+  = f.label "問題文"
+  = f.text_area :text
+
+  = f.label "選択肢1"
+  = f.text_field :choice1
+
+  = f.label "選択肢2"
+  = f.text_field :choice2
+
+  = f.label "選択肢3"
+  = f.text_field :choice3
+
+  = f.label "選択肢4"
+  = f.text_field :choice4
+
+  = f.label "選択肢5"
+  = f.text_field :choice5
+
+  = f.label "注"
+  = f.text_field :attention
+
+  = f.submit
+
+
