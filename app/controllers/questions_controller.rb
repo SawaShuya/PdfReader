@@ -38,7 +38,6 @@ class QuestionsController < ApplicationController
         @unsaved_questions.concat save_texts(text_arr, test_number)
       end
     end
-
     if @unsaved_questions.present?
       @questions = QuestionCollection.new(exchange_hash(@unsaved_questions))
       render "ajust_form"
@@ -71,7 +70,7 @@ class QuestionsController < ApplicationController
   end
 
   def save_texts(text_arr, test_number)
-    @unsaved_questions = []
+    @unsaved_questions_arr = []
     subject = Subject.find_or_create_by(name: text_arr.first)
     test_subject = TestSubject.find_or_create_by(test_number_id: test_number.id, subject_id: subject.id)
 
@@ -90,10 +89,10 @@ class QuestionsController < ApplicationController
       question.attention = attention if attention.present?
 
       unless question.save
-        @unsaved_questions << question
+        @unsaved_questions_arr << question
       end
     end
-    return @unsaved_questions
+    return @unsaved_questions_arr
   end
 
   def exchange_hash(questions)

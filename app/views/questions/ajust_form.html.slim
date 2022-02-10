@@ -1,18 +1,18 @@
 h2 
-  | ajust_form 
+  | 読み取り情報の修正
 
 .form
   = form_with model: @questions, url: create_collection_path, local: true do |form|
     - @questions.collection.each do |question|
       = fields_for 'questions[]', question do |f|
-        .card.card-body
+        .card.card-body.mb-3
           .fulltext.card-title
             = question.fulltext
           .form-group
             = f.hidden_field :test_subject_id
           .form-group
             = f.label "問題文"
-            = f.text_field :text, class: "form-control"
+            = f.text_area :text, class: "form-control"
           .form-group
             = f.label "選択肢1"
             = f.text_field :choice1, class: "form-control"
@@ -31,6 +31,6 @@ h2
           .form-group
             = f.label "注"
             = f.text_field :attention, class: "form-control"
-      .actions 
-        = form.submit "修正完了", class: "btn btn-info"
+    .actions 
+      = form.submit "修正完了", class: "btn btn-info"
 
