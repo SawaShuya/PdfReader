@@ -4,3 +4,5 @@ libpoppler-glib-dev
 libpoppler-glib-doc
 poppler-utils
 libgirepository1.0-dev
+python-dev
+python2.7-dev
