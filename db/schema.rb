@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_061831) do
+ActiveRecord::Schema.define(version: 2022_02_11_064343) do
+
+  create_table "collect_numbers", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.integer "test_subject_id", null: false
@@ -21,7 +28,11 @@ ActiveRecord::Schema.define(version: 2022_02_09_061831) do
     t.string "choice4", null: false
     t.string "choice5", null: false
     t.string "attention"
-    t.string "answer"
+    t.string "answer1"
+    t.string "answer2"
+    t.string "answer3"
+    t.string "answer4"
+    t.string "answer5"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

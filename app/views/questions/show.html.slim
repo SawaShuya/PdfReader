@@ -1,80 +1,97 @@
 h2 
   | 問題詳細
 
-table.show.table 
-  tr
-    th
-      | 年度
-    td
-      = @question.test_subject.test_number.year.to_s + "年 第 " + @question.test_subject.test_number.number.to_s + " 回" 
-  tr
-    th
-      | 科目
-    td
-      = @question.test_subject.subject.name
-  tr
-    th
-      | 問題文
-    td
-      = @question.text
-  tr
-    th
-      | 選択肢1
-    td
-      = @question.choice1 
-  tr
-    th
-      | 選択肢2
-    td
-      = @question.choice2
-  tr
-    th
-      | 選択肢3
-    td
-      = @question.choice3
-  tr
-    th
-      | 選択肢4
-    td
-      = @question.choice4
-  tr
-    th
-      | 選択肢5
-    td
-      = @question.choice5
-  tr
-    th
-      | 注
-    td
-      = @question.attention
-  tr
-    th
-      | 解答
-    td
-      = @question.answer
-  tr
-    th
-      | メモ
-    td
-      = @question.comment
-  tr 
-    th
-      | 登録日時
-    td 
-      = @question.created_at.strftime("%Y/%m/%d %H:%M")
-  tr
-    th 
-      | 更新日時
-    td
-      = @question.updated_at.strftime("%Y/%m/%d %H:%M")
+.show
+  table.table 
+    tr
+      th
+        | 年度
+      td
+        = @question.test_subject.test_number.year.to_s + "年 第 " + @question.test_subject.test_number.number.to_s + " 回" 
+    tr
+      th
+        | 科目
+      td
+        = @question.test_subject.subject.name
+    tr
+      th
+        | 問
+      td
+        = @question.text
+        br
+        - if @question.attention.present?
+          = "(注) " + @question.attention
 
-- if user_signed_in?
-  .links
-    .row
-      .col
-        = link_to "編集", edit_question_path(@question), class: "btn btn-info btn-block"
-      .col
-        = link_to "削除", question_path(@question), method: :delete, class: "btn btn-danger btn-block"
+
+
+  table.table
+    tr
+      th
+        | No.
+      th style="width: 47%"
+        | 選択肢
+      th style="width: 47%"
+        | 解説
+    tr
+      th.text-center
+        = render 'number', num: 1, question: @question
+      td
+        = @question.choice1 
+      td
+        = @question.answer1
+    tr
+      th.text-center
+        = render 'number', num: 2, question: @question
+      td
+        = @question.choice2
+      td
+        = @question.answer2
+    tr
+      th.text-center
+        = render 'number', num: 3, question: @question
+      td
+        = @question.choice3
+      td
+        = @question.answer3
+    tr
+      th.text-center
+        = render 'number', num: 4, question: @question
+      td
+        = @question.choice4
+      td
+        = @question.answer4
+    tr
+      th.text-center
+        = render 'number', num: 5, question: @question
+      td
+        = @question.choice5
+      td
+        = @question.answer5
+
+  table.table
+    tr 
+      th
+        | メモ
+      td
+        = @question.comment
+    tr 
+      th
+        | 登録日時
+      td 
+        = @question.created_at.strftime("%Y/%m/%d %H:%M")
+    tr
+      th 
+        | 更新日時
+      td
+        = @question.updated_at.strftime("%Y/%m/%d %H:%M")
+
+  - if user_signed_in?
+    .links
+      .row
+        .col
+          = link_to "編集", edit_question_path(@question), class: "btn btn-info btn-block"
+        .col
+          = link_to "削除", question_path(@question), method: :delete, class: "btn btn-danger btn-block"
 
 
 

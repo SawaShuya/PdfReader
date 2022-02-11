@@ -1,4 +1,9 @@
-h2 
-  = "「" + @subject.name + "」 の年度一覧"
+.d-flex.justify-content-between
+  h2.d-inline-block
+    = @subject.name
 
+  h5.d-inline-block
+    = link_to "すべて", subject_questions_path, class: "btn btn-outline-info"
+
+      
 = render 'test_subjects/index', test_subjects: @test_subjects

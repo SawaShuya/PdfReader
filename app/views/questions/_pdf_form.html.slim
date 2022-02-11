@@ -1,17 +1,18 @@
 = form_with url: create_from_pdf_path, local: true do |f|
-  .form-group.input-group
-    .input-group-prepend
-      = f.label "第", class: "input-group-text"
-    
-    = f.number_field :number, maxlength: 4, value: 0, min: 1, class: "form-control"
-    
-    .input-group-append
-      = f.label "回", class: "input-group-text"
+  .form-group.row
+    .col-6.input-group
+      .input-group-prepend
+        = f.label "第", class: "input-group-text"
+      
+      = f.number_field :number, maxlength: 4, value: 1, min: 1, class: "form-control"
+      
+      .input-group-append
+        = f.label "回", class: "input-group-text"
 
-  .form-group.input-group
-    = f.number_field :year, maxlength: 4, value: Time.current.year, class: "form-control"
-    .input-group-append
-      = f.label "年度", class: "input-group-text"
+    .col-6.input-group
+      = f.number_field :year, maxlength: 4, value: Time.current.year, class: "form-control"
+      .input-group-append
+        = f.label "年度", class: "input-group-text"
   .form-group
     = f.file_field :contents, multiple: true, class: "form-control-file"
   

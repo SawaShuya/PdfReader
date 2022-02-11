@@ -1,5 +1,5 @@
 class TestNumber < ApplicationRecord
-  has_many :test_subjects
+  has_many :test_subjects, dependent: :destroy
   has_many :subjects, through: :test_subjects
 
   def display

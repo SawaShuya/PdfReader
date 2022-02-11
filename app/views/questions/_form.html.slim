@@ -2,38 +2,68 @@
   .form-group
     = f.label "問題文"
     = f.text_area :text, class: "form-control"
-
-  .form-group
-    = f.label "選択肢1"
-    = f.text_field :choice1, class: "form-control"
-
-  .form-group
-    = f.label "選択肢2"
-    = f.text_field :choice2, class: "form-control"
-    
-  .form-group
-    = f.label "選択肢3"
-    = f.text_field :choice3, class: "form-control"
-
-  .form-group
-    = f.label "選択肢4"
-    = f.text_field :choice4, class: "form-control"
-
-  .form-group
-    = f.label "選択肢5"
-    = f.text_field :choice5, class: "form-control"
-
   .form-group
     = f.label "注"
-    = f.text_field :attention, class: "form-control"
+    = f.text_area  :attention, class: "form-control"
+
+  .form-group.row
+    .col-6
+      = f.label "選択肢1"
+      = f.text_area  :choice1, class: "form-control"
+    .col-6
+      .custom-control.custom-checkbox.mb-2
+        = f.check_box :collect_answer1, class: "custom-control-input"
+        = f.label "解答1", class: "custom-control-label", for: "question_collect_answer1"
+      = f.text_area  :answer1, class: "form-control"
+
+      
+
+  .form-group.row
+    .col-6
+      = f.label "選択肢2"
+      = f.text_area  :choice1, class: "form-control"
+    .col-6
+      .custom-control.custom-checkbox.mb-2
+        = f.check_box :collect_answer2, class: "custom-control-input"
+        = f.label "解答2", class: "custom-control-label", for: "question_collect_answer2"
+      = f.text_area  :answer2, class: "form-control"
+    
+  .form-group.row
+    .col-6
+      = f.label "選択肢3"
+      = f.text_area  :choice1, class: "form-control"
+    .col-6
+      .custom-control.custom-checkbox.mb-2
+        = f.check_box :collect_answer3, class: "custom-control-input"
+        = f.label "解答3", class: "custom-control-label", for: "question_collect_answer3"
+      = f.text_area  :answer3, class: "form-control"
+
+  .form-group.row
+    .col-6
+      = f.label "選択肢4"
+      = f.text_area  :choice1, class: "form-control"
+    .col-6
+      .custom-control.custom-checkbox.mb-2
+        = f.check_box :collect_answer4, class: "custom-control-input"
+        = f.label "解答4", class: "custom-control-label", for: "question_collect_answer4"
+      = f.text_area  :answer4, class: "form-control"
+
+  .form-group.row
+    .col-6
+      = f.label "選択肢5"
+      = f.text_area  :choice1, class: "form-control"
+    .col-6
+      .custom-control.custom-checkbox.mb-2
+        = f.check_box :collect_answer5, class: "custom-control-input"
+        = f.label "解答5", class: "custom-control-label", for: "question_collect_answer5"
+      = f.text_area  :answer5, class: "form-control"
+
   
-  .form-group
-    = f.label "解答"
-    = f.text_field :answer, class: "form-control"
+  
 
   .form-group
     = f.label "メモ"
-    = f.text_field :comment, class: "form-control"
+    = f.text_area  :comment, class: "form-control"
 
   = f.submit "更新", class: "btn btn-primary"
 

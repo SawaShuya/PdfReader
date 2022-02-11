@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :new]
 
   def index
-    @questions = Question.all.includes(:test_subject).page(params[:page])
+    @questions = Question.search(params[:search_word]).page(params[:page])
   end
 
   def new; end
@@ -21,10 +21,13 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
+    collect_answers = [params[:question][:collect_answer1], params[:question][:collect_answer2], params[:question][:collect_answer3], params[:question][:collect_answer4], params[:question][:collect_answer5]]
+
     if @question.update(question_params)
-      flash[:notice] = "登録しました!"
+      @question.update_collect_numbers(collect_answers)
+      flash[:notice] = "更新しました!"
     end
-    redirect_to questions_path
+    redirect_to question_path(@question)
   end
 
   def create_from_pdf
@@ -66,7 +69,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:text, :choice1, :choice2, :choice3, :choice4, :choice5, :answer, :attention)
+    params.require(:question).permit(:text, :choice1, :choice2, :choice3, :choice4, :choice5, :comment, :attention, :answer1, :answer2, :answer3, :answer4, :answer5)
   end
 
   def save_texts(text_arr, test_number)
@@ -83,6 +86,11 @@ class QuestionsController < ApplicationController
       if texts.last.include?("（注）")
         attention = texts.last.split("（注）").last
         texts[texts.size-1] = texts.last.split("（注）").first
+      end
+
+      if texts[5].nil? && texts[0].scan("。").length == 2
+        texts.insert(1, texts[0].split("。").reject(&:empty?).last)
+        text[0] = texts[0].split("。").first
       end
 
       question = Question.new(test_subject_id: test_subject.id, text: texts[0], choice1: texts[1], choice2: texts[2], choice3: texts[3], choice4: texts[4], choice5: texts[5])

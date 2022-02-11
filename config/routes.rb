@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :subjects, only: [:index] do
     get 'backnumbers' => 'subjects#test_numbers', as: 'test_numbers'
+    get 'questions' => 'subjects#questions', as: 'questions'
   end
 
   resources :test_subjects, only: [:show]

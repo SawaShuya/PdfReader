@@ -9,8 +9,13 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :choice4, null: false
       t.string :choice5, null: false
       t.string :attention, null: true
+
+      t.string :answer1
+      t.string :answer2
+      t.string :answer3
+      t.string :answer4
+      t.string :answer5
       
-      t.string :answer, null: true
       t.text :comment, null: true
       t.timestamps
     end
