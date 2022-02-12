@@ -1,0 +1,15 @@
+.form-group.row
+  .col-6.input-group
+    .input-group-prepend
+      = f.label "第", class: "input-group-text"
+    
+    = f.number_field :number, maxlength: 4, value: 1, min: 1, class: "form-control"
+    
+    .input-group-append
+      = f.label "回", class: "input-group-text"
+  .col-6.input-group
+    = f.number_field :year, maxlength: 4, value: Time.current.year, class: "form-control"
+    .input-group-append
+      = f.label "年度", class: "input-group-text"
+.form-group
+  = f.select :subject_id, Subject.all.map { |s| [s.name, s.id] }, {}, { class: "form-control" }

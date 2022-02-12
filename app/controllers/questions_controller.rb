@@ -5,10 +5,24 @@ class QuestionsController < ApplicationController
     @questions = Question.search(params[:search_word]).page(params[:page])
   end
 
-  def new; end
+  def new
+    @question = Question.new
+  end
 
   def create
-
+    @question = Question.new(question_params)
+    collect_answers = [params[:question][:collect_answer1], params[:question][:collect_answer2], params[:question][:collect_answer3], params[:question][:collect_answer4], params[:question][:collect_answer5]]
+    test_number = TestNumber.find_or_create_by(number: params[:question][:number], year: params[:question][:year])
+    subject = Subject.find_by(id: params[:question][:subject_id])
+    
+    test_subject = TestSubject.find_or_create_by(test_number_id: test_number.id, subject_id: subject.id)
+    
+    @question.test_subject_id = test_subject.id
+    if @question.save!
+      @question.update_collect_numbers(collect_answers)
+      flash[:notice] = "登録しました!"
+    end
+    redirect_to question_path(@question)
   end
 
   def show
