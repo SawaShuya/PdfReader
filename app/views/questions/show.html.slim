@@ -34,35 +34,35 @@ h2
         | 解説
     tr
       th.text-center
-        = render 'number', num: 1, question: @question
+        = render 'number', num: 1, answer_arr: @answer_arr
       td
         = @question.choice1 
       td
         = @question.answer1
     tr
       th.text-center
-        = render 'number', num: 2, question: @question
+        = render 'number', num: 2, answer_arr: @answer_arr
       td
         = @question.choice2
       td
         = @question.answer2
     tr
       th.text-center
-        = render 'number', num: 3, question: @question
+        = render 'number', num: 3, answer_arr: @answer_arr
       td
         = @question.choice3
       td
         = @question.answer3
     tr
       th.text-center
-        = render 'number', num: 4, question: @question
+        = render 'number', num: 4, answer_arr: @answer_arr
       td
         = @question.choice4
       td
         = @question.answer4
     tr
       th.text-center
-        = render 'number', num: 5, question: @question
+        = render 'number', num: 5, answer_arr: @answer_arr
       td
         = @question.choice5
       td
@@ -91,7 +91,7 @@ h2
         .col
           = link_to "編集", edit_question_path(@question), class: "btn btn-info btn-block"
         .col
-          = link_to "削除", question_path(@question), method: :delete, class: "btn btn-danger btn-block"
+          = link_to "削除", question_path(@question), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-outline-danger btn-block"
 
 
 

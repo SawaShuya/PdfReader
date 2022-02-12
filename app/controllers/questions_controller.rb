@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer_arr = @question.collect_numbers.map{|collect_number| collect_number.number}
   end
 
   def edit
@@ -42,6 +43,13 @@ class QuestionsController < ApplicationController
       flash[:notice] = "更新しました!"
     end
     redirect_to question_path(@question)
+  end
+
+  def destroy
+    question = Question.find(params[:id])
+    question.destroy
+    flash[:notice] = "削除しました!"
+    redirect_to questions_path
   end
 
   def create_from_pdf

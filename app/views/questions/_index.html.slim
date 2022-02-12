@@ -16,8 +16,8 @@ table.table
         = question.test_subject.subject.name
       td 
         = question.text
-      td
-        = link_to '詳細', question_path(question)
+      td.text-nowrap
+        = link_to '詳細', question_path(question),class: "btn btn-outline-secondary"
 
 = paginate questions
 
